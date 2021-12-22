@@ -1,19 +1,26 @@
-let list = [1,2,3]
-list.map((ele, index) => {
-  Object.defineProperty(list, index, {
-    get: function () {
-      console.log('get index' + index);
-      return ele
+/**
+ * configurable 是否可以删除
+ * writable 是否可以修改(赋值)
+ * enumerable 是否可以枚举
+*/
+const obj = {}
+var data = 38
+
+// var descriptor = Object.create(null); // 没有继承的属性
+// descriptor.value = 'abc'
+
+Object.defineProperty(obj, 'key', {
+    get() {
+        return data
     },
-    set: function (value) {
-      console.log('set index' + index);
-      return value;
-    }
-  })
+    set(newValue) { 
+        data = newValue
+    },
+    enumerable : true,
+    configurable : false,
 })
 
-list.push(4)
+// obj.key = 40
 
-list[3] = 5
 
-// console.log(list);
+console.log(data);

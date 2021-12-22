@@ -1,5 +1,3 @@
 # note
 
-测试git push
-
-test
+hard hard study, day day up!
