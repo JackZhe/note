@@ -7,17 +7,19 @@ function cb() {
   // function reactiveSetter (){}
   
   function defineReactive(obj, key, val) {
+    const dep = new Dep();
     Object.defineProperty(obj, key, {
       enumerable: true,
       configurable: true,
       get: function reactiveGetter() {
+        dep.addSub(Dep.target);
         return val;
       },
       set: function reactiveSetter(newValue) {
         if (newValue === val) {
           return;
         }
-        cb(newValue);
+        dep.notify();
       },
     });
   }
@@ -36,14 +38,16 @@ function cb() {
     constructor(options) {
       this._data = options.data;
       observer(this._data);
+      new Watcher()
+      console.log('render~', this._data.a);
     }
   }
   
   let o = new Vue({
     data: {
-      test: "aaaa",
+      a: "A",
+      b: "B"
     },
   });
   
-  o._data.test = "123";
-  
+  // o._data.a = '123'
