@@ -30,7 +30,7 @@ class Vue {
 
 const eventBus = new Vue()
 
-eventBus.$on('sum',function() {
+eventBus.$on('sum', function() {
   let count = [...arguments].reduce((x, y) => x + y)
   console.log(count)
 })
