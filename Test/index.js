@@ -1,20 +1,11 @@
-let n = null
-function Vue() {
-    n = new Watcher()
-}
+document.addEventListener('mousemove', (e)=>{
+    // e.target.click()
+})
 
-function Watcher() {
-    Dep.target = this;
-    console.log('2', this);
+let b = document.getElementsByTagName('body')[0]
+b.addEventListener('click', (e)=>{
+    console.log(123);
+})
+function test(){
+    console.log('test');
 }
-function Dep() {
-    console.log();
-}
-Dep.prototype.add = function (obj) {
-    console.log(obj);
-}
-
-let o = new Vue()
-
-let d = new Dep()
-d.add(Dep.target === n)
